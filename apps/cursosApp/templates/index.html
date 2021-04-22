@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cursos</title>
+     {%load static%}     
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+        
+    <script src="{% static 'js/script.js' %}"></script>
+  </head>
+  <body>
+    <h1>Add a new course</h1>
+    {% if messages %}
+    <ul class="messages">
+           {% for message in messages %}       
+      <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+        {{ message }}
+      </li>
+           {% endfor %}
+    </ul>
+    {% endif %}
+    <br />
+    <form action="" method="POST">
+      {%csrf_token%} Nombre del Curso: <br /><input
+        type="text"
+        name="name"
+        value=""
+      />
+      <br />
+      descripcion: <br />
+      <textarea name="desc" rows="10" cols="30"></textarea>
+      <br />
+      <input type="submit" />
+    </form>
+    <br />
+    <h1>Cursos</h1>
+    <table>
+      <tr>
+        <th>Nombre de Curso</th>
+        <th>Descripcion</th>
+        <th>date Added</th>
+        <th>Actions</th>
+      </tr>
+      {%for curso in cursos%}
+      <tr>
+        <th>{{curso.name}}</th>
+        <th>{{curso.desc.desc}}</th>
+        <th>{{curso.updated_at}}</th>
+        <th><a href="/confirm/{{curso.desc.id}}/{{curso.name}}">remove</a></th>
+        {%endfor%}
+      </tr>
+    </table>
+  </body>
+</html>

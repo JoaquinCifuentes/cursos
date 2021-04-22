@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Confirm to Destroy</title>
+     {%load static%}     
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+        
+    <script src="{% static 'js/script.js' %}"></script>
+  </head>
+  <body>
+    <h2>
+      Are you shure you want to delete the following course??
+      <h4>Nombre del curso :{{name}}</h4>
+      <h4>Descripcion :{{descripcion.desc}}</h4>
+    </h2>
+    <br />
+
+    <a href="{% url 'index' %}">No</a
+    ><a href="{% url 'destroy' id=id %}">Yes!, I want to delete this</a>
+  </body>
+</html>
